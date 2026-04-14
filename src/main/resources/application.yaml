@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: agentdemo
+  ai:
+    openai:
+      api-key: sk-fzgzofbfycwithholklhmvyzjabnsqsaurinjottpmidjrjz
+      base-url: https://api.siliconflow.cn
+      chat:
+        options:
+          model: Qwen/Qwen3-32B
+
