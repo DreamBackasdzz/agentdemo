@@ -15,8 +15,15 @@ spring:
           port: 19530
         collection-name: knowledge
         embedding-dimension: 1536
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+
+gaode:
+  weather:
+    api-key: e77fb79c225cc275ccaf82bc701c6f7b
 
 rag:
   file-storage:
     location: D:/rag-files/upload
-

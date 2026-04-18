@@ -25,7 +25,7 @@ public class AgentdemoApplication {
                 logger.info("Available memory: {} MB", Runtime.getRuntime().freeMemory() / (1024 * 1024));
 
                 logger.info("Initializing Milvus knowledge base...");
-                milvusService.saveToMilvus("Java面试题大全");
+                //milvusService.saveToMilvus("Java面试题大全");
                 logger.info("Milvus knowledge base initialized successfully");
                 logger.info("Memory after initialization: {} MB", Runtime.getRuntime().freeMemory() / (1024 * 1024));
             } catch (OutOfMemoryError e) {
