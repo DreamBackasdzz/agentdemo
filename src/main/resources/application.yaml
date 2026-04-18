@@ -8,4 +8,15 @@ spring:
       chat:
         options:
           model: Qwen/Qwen3-32B
+    vectorstore:
+      milvus:
+        client:
+          host: localhost
+          port: 19530
+        collection-name: knowledge
+        embedding-dimension: 1536
+
+rag:
+  file-storage:
+    location: D:/rag-files/upload
 

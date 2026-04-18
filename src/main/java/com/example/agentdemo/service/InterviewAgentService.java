@@ -29,16 +29,24 @@ public class InterviewAgentService {
     }
 
     public String chat(String message, String conversationId){
-        return chatClient.prompt()
-                .system("""
+        // 先手动强制查一遍
+        String context = questionTool.generateQuestion(message);
+        String sysPrompt = """
                     你是一名严格的技术面试官:
+                    【参考问题】
+                    %s
                     规则：
-                    1. 用户说“开始面试” → 出题
+                    1. 用户说"开始面试" → 必须从参考问题中选择合适的问题出题
                     2. 用户回答问题 → 评分
-                    3. 评分后继续追问
+                    3. 评分后继续追问，追问也必须基于参考问题
                     4. 问题逐渐深入
+                    5. 绝对不能自己创造问题，必须严格基于参考问题
                     保持专业、简洁、真实面试风格
-                """)
+                    请严格基于参考知识进行提问，避免任何捏造
+                """.formatted(context);
+
+        return chatClient.prompt()
+                .system(sysPrompt)
                 .user(message)
                 .advisors(a -> a.param("conversationId", conversationId))
                 .tools(questionTool, scoreTool)
